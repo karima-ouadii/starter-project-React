@@ -13,8 +13,11 @@ export  class AuthProvider extends Component {
            currentUser:{}
        }
    }
-   gererStock=()=>{
-
+   
+   componentDidMount(){
+       auth.onAuthStateChanged((user)=>{
+           this.setState({currentUser:user})
+       })
    }
 
     

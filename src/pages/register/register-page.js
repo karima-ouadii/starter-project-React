@@ -59,9 +59,10 @@ export default class RegisterPage extends Component {
                 auth.onAuthStateChanged((user)=>{
                     user.updateProfile({
                         displayName:this.state.firstname+""+this.state.lastname
-                    }).then((response)=>{
-                        console.log(response);
                     })
+                    // .then((response)=>{
+                    //     console.log(response);
+                    // })
                     console.log(user)
                 })
 
