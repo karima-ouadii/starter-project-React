@@ -23,11 +23,11 @@ export  class AuthProvider extends Component {
     }
 
     //shared feautures
-    login=()=>{
-        alert("login")
+    login=(email,password)=>{
+        return auth.signInWithEmailAndPassword(email,password);
 }
     logout=()=>{
-                  alert("logout")
+        return auth.signOut(); 
     }
     render() {
         return (
