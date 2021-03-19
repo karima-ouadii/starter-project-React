@@ -1,9 +1,71 @@
 import React, { Component } from 'react';
 import Register from "../../components/register"
+import AuthContext from "../../shared/auth/auth-context"
+
 
 
 export default class RegisterPage extends Component {
-    render() {
-        return <Register/>;
+    constructor(){
+        super();
+
+        //state
+        this.state={
+            firstname:"",
+            lastname:"",
+            email:"",
+            password:"",
+            confirmedPassword:"",
         }
+    }
+    render() {
+        return <Register handleChange={this.handleChangeInput}
+                          handleSubmit={this.signup}/>;
+        }
+
+        //----singup
+        signup=(event)=>{
+
+            //ne pas actualiser la page
+            event.preventDefault();
+
+            //vider les inputs du formulaire
+            event.target.reset();
+            
+            //validation du formulaire
+
+            if (
+                this.state.firstname == "" ||
+                this.state.lastname == "" ||
+                this.state.email == "" ||
+                this.state.password == "" ||
+                this.state.confirmedPassword == ""
+              ) {
+                alert("Veuillez remplir toutes les champs du formulaire :expressionless::angry:");
+              }
+              else if(this.state.confirmedPassword != this.state.password){
+         
+               alert("Veuillez Saisir le meme mot de passe hihi 😅 !!");
+         
+              }else {
+         
+            //    //utiliser register du auth-context
+            //     console.log(this.context)
+            this.context.register(this.state.email,this.state.password).then((response)=>{
+                // console.log(response)
+            }).catch((error)=>{
+                alert(error.message)
+            })
+         
+              }
+        };
+        //----handle change input
+        handleChangeInput=(event)=>{
+            let value =event.target.value;
+            let name=event.target.name;
+            //--changer state
+            this.setState({[name]:value})
+        };
 }
+
+//liaison avec auth
+RegisterPage.contextType=AuthContext;

@@ -10,16 +10,23 @@ import Error404Page from "../pages/error404-page";
 import LmsPage from "../pages/lms-page";
 import LoginPage from "../pages/login/login-page";
 import RegisterPage from "../pages/register/register-page";
+import { AuthProvider } from "../shared/auth/auth-context";
 
 export default function AppRouter() {
-    return ( <Router >
+    return ( 
+    <Router >
+       <AuthProvider>
+       
         <Switch >
-        < Route exact path = "/" component = { LmsPage } /> 
-        <Route path = "/register" component = { RegisterPage }/> 
-        < Route path = "/admin" component = { LoginPage }/> 
-        <Route path = "/dash" component = { DashboardPage } /> 
-        <Route path = "*" component = { Error404Page}/> 
-        </Switch> 
-        </Router>
+        < Route exact path ="/" component = {LmsPage} /> 
+        <Route path ="/register" component = {RegisterPage}/> 
+        < Route path ="/admin" component = {LoginPage}/> 
+        <Route path ="/dash" component = {DashboardPage} /> 
+        <Route path ="*" component = {Error404Page}/> 
+        </Switch>
+
+        </AuthProvider>
+    </Router>
+    
     );
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './../assets/main.css';
 import bgImage from "./../assets/bg-01.jpg"
 
-export default function Register() {
+export default function Register(props) {
     return (
         <div>
         <div className="limiter">
@@ -12,7 +12,7 @@ export default function Register() {
             style={{ backgroundImage: `url(${bgImage})` }}
           >
             <div className="wrap-login100">
-              <form className="login100-form validate-form">
+              <form onSubmit={props.handleSubmit}className="login100-form validate-form">
                 <span className="login100-form-logo">
                   <i className="fas fa-sign-in-alt" />
                 </span>
@@ -23,7 +23,8 @@ export default function Register() {
                   className="wrap-input100 validate-input"
                   data-validate="Enter username"
                 >
-                  <input
+                  <input 
+                  onChange={props.handleChange} 
                     className="input100"
                     type="text"
                     name="firstname"
@@ -32,7 +33,8 @@ export default function Register() {
                   <span className="focus-input100" data-placeholder="😃"></span>
                 </div>
                 <div className="wrap-input100 validate-input">
-                  <input
+                  <input 
+                  onChange={props.handleChange}
                     className="input100"
                     type="text"
                     name="lastname"
@@ -41,7 +43,8 @@ export default function Register() {
                   <span className="focus-input100" data-placeholder="😃"></span>
                 </div>
                 <div className="wrap-input100 validate-input">
-                  <input
+                  <input 
+                  onChange={props.handleChange}
                     className="input100"
                     type="email"
                     name="email"
@@ -53,7 +56,8 @@ export default function Register() {
                   className="wrap-input100 validate-input"
                   data-validate="Enter password"
                 >
-                  <input
+                  <input 
+                  onChange={props.handleChange}
                     className="input100"
                     type="password"
                     name="password"
@@ -65,27 +69,25 @@ export default function Register() {
                   className="wrap-input100 validate-input"
                   data-validate="Enter password"
                 >
-                  <input
+                  <input 
+                  onChange={props.handleChange}
                     className="input100"
                     type="password"
-                    name="repeatedPass"
+                    name="confirmedPassword"
                     placeholder="Comfirm Password"
                   />
                   <span className="focus-input100" data-placeholder="🤨" />
                 </div>
 
                 <div className="container-login100-form-btn">
-                  <button className="login100-form-btn">Register</button>
+                  <button type="submit" className="login100-form-btn">Register</button>
                 </div>
                 <div className="text-center p-t-90">
-                  <a
-                    className="txt1"
-                    href="https://colorlib.com/etc/lf/Login_v3/index.html#"
-                  >
+                  
                     <br/>
 
                    <Link to="/admin" className="text-white">  Log into your account </Link>
-                  </a>
+                  
                 </div>
               </form>
             </div>
